@@ -1,0 +1,83 @@
+#ifndef __ILI9341_H
+#define __ILI9341_H
+
+#include "wm_include.h"
+
+#define GPIO_RES         WM_IO_PB_01
+#define GPIO_DC          WM_IO_PB_00
+
+#define ST7789_BUF_SIZE         1024
+
+//#define GPIO_UP			WM_IO_PA_01
+//#define GPIO_DOWN			WM_IO_PA_02
+#define GPIO_LFT			WM_IO_PA_08
+#define GPIO_RHT			WM_IO_PA_04
+#define GPIO_START			WM_IO_PA_05
+#define GPIO_A				WM_IO_PA_06
+#define GPIO_B				WM_IO_PA_07
+
+
+
+#if 1
+#define LCD_SPI_CS			WM_IO_PB_04
+#define LCD_SPI_CLK			WM_IO_PB_02
+#define LCD_SPI_MISO		WM_IO_PB_03
+#define LCD_SPI_MOSI		WM_IO_PB_05
+#else
+#define LCD_SPI_CS			WM_IO_PB_09
+#define LCD_SPI_CLK			WM_IO_PB_12
+#define LCD_SPI_MISO		WM_IO_PB_10
+#define LCD_SPI_MOSI		WM_IO_PB_11
+#endif
+
+
+#define ILI9341_W 240
+#define ILI9341_H 240
+
+#define ST7789_W 240
+#define ST7789_H 240
+
+
+//画笔颜色
+#define WHITE			0xFFFF
+#define BLACK			0x0000	  
+#define BLUE			0x001F
+#define BRED			0XF81F
+#define GRED			0XFFE0
+#define GBLUE			0X07FF
+#define RED				0xF800
+#define MAGENTA			0xF81F
+#define GREEN			0x07E0
+#define CYAN			0x7FFF
+#define YELLOW			0xFFE0
+#define BROWN			0XBC40 //棕色
+#define BRRED			0XFC07 //棕红色
+#define GRAY			0X8430 //灰色
+//GUI颜色
+
+#define DARKBLUE		0X01CF	//深蓝色
+#define LIGHTBLUE		0X7D7C	//浅蓝色  
+#define GRAYBLUE		0X5458 //灰蓝色
+//以上三色为PANEL的颜色 
+ 
+#define LIGHTGREEN		0X841F //浅绿色
+#define LGRAY			0XC618 //浅灰色(PANNEL),窗体背景色
+
+#define LGRAYBLUE		0XA651 //浅灰蓝色(中间层颜色)
+#define LBBLUE			0X2B12 //浅棕蓝色(选择条目的反色)
+
+
+void ILI9341_Init(void);
+void ILI9341_DrawPoint(u16 x,u16 y,u16 color);
+void ILI9341_DrawLineOne(u16 y,u16* data);
+void ILI9341_DrawLine(u16 y,u16* data);
+void ILI9341_delay_ms(unsigned int ms);
+void ILI9341_Fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 color);
+void ILI9341_Clear(u16 Color);
+
+
+void ST7789_Fill(uint16_t x_start, uint16_t y_start, uint16_t x_end, uint16_t y_end, uint16_t color);
+void ST7789_Show_Image(u16 x, u16 y, u16 width, u16 height, const u8 *p);
+#endif
+
+
